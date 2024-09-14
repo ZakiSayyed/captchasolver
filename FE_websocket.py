@@ -4,7 +4,7 @@ import websockets
 
 # WebSocket connection logic
 async def send_message(message):
-    uri = "ws:https://e980-154-192-145-13.ngrok-free.app"
+    uri = "ws:https://e980-154-192-145-13.ngrok-free.app:8183"
     async with websockets.connect(uri) as websocket:
         await websocket.send(message)
 
