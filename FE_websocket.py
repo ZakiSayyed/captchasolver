@@ -5,7 +5,7 @@ import websockets
 # WebSocket connection logic
 async def send_message(message):
     # Replace with your ngrok HTTPS URL
-    uri = "wss://9952-154-192-145-13.ngrok-free.app"
+    uri = "wss://a800-154-192-145-13.ngrok-free.app"
     async with websockets.connect(uri) as websocket:
         await websocket.send(message)
 
