@@ -2,20 +2,27 @@ import streamlit as st
 import asyncio
 import websockets
 
+# WebSocket connection logic
 async def send_message(message):
     uri = "ws://localhost:8765"
     async with websockets.connect(uri) as websocket:
         await websocket.send(message)
 
-def generate_token():
-    return "token123"
+# Define a function to run asyncio event loop
+def run_async_task(task):
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    loop.run_until_complete(task)
 
-st.title("ADB Remote Trigger")
+st.title("WebSocket with Streamlit")
 
 if st.button("Connect"):
-    token = generate_token()
+    token = "token123"
     st.success("Token generated successfully!")
     
     # Send message to WebSocket server
-    asyncio.run(send_message(token))
-    st.write("Message sent to WebSocket server")
+    try:
+        run_async_task(send_message(token))
+        st.write("Message sent to WebSocket server")
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
