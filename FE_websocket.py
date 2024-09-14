@@ -4,7 +4,7 @@ import websockets
 
 # WebSocket connection logic
 async def send_message(message):
-    uri = "ws://localhost:8765"
+    uri = "ws://154.192.145.13:8765"
     async with websockets.connect(uri) as websocket:
         await websocket.send(message)
 
